@@ -1,11 +1,18 @@
 package main.java.project.vessel;
 
 import main.java.project.material.Material;
-import main.java.project.state.Bubble;
-import main.java.project.state.SparklingWater;
-import main.java.project.state.Water;
+import main.java.project.stuff.Bubble;
+import main.java.project.stuff.SparklingWater;
+import main.java.project.stuff.Transformable;
+import main.java.project.stuff.Water;
 
-public class Bottle extends Vessel implements Containable {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class Bottle extends Vessel implements Containable, Serializable {
     private double volume;
     private SparklingWater water;
     boolean warmBottle;
@@ -34,28 +41,28 @@ public class Bottle extends Vessel implements Containable {
         this.warmBottle = warmBottle;
     }
 
-    public Bottle(double volume, double diameter, int weight, Material material, SparklingWater water, int temperature, boolean warmBottle) {
+    public Bottle(double volume, double diameter, int weight, Material material, SparklingWater water, boolean warmBottle) {
         super(volume, diameter, weight, material);
         this.water = water;
-        this.water.setTemperature(temperature);
-        Bubble[] bubbles = new Bubble[(int) volume * 1000];
-        for (int i = 0; i < bubbles.length; i++) {
-            bubbles[i] = new Bubble("CO2");
-        }
+//        List<Bubble> bubbles = new ArrayList<>();
+//        for (int i = 0; i < volume*1000; i++) {
+//            bubbles.add(new Bubble("CO2"));
+//        }
+        List<Bubble> bubbles = Stream.generate(() -> new Bubble("CO2")).limit((long) (volume*1000)).collect(Collectors.toList());
         water.pump(bubbles);
         if (warmBottle == true) {
-            warm(temperature);
+            warm(this.water.getTemperature());
         }
     }
 
+    public Bottle() {
+
+    }
+
+
     @Override
     public void addStuff(Transformable stuff) {
-        Water water1 = new Water() {
-            @Override
-            public void mix() {
 
-            }
-        };
     }
 
     @Override
@@ -74,7 +81,7 @@ public class Bottle extends Vessel implements Containable {
     }
 
     public void open() {
-        System.out.println("Opening the bottle");
+        System.out.println("Bottle is opened");
         this.water.setOpened(true);
     }
 
@@ -84,13 +91,15 @@ public class Bottle extends Vessel implements Containable {
     }
 
     public void warm(double temperature) {
-        System.out.println(String.format("Warming water to:%s",temperature));
-        for (double i = temperature; i <= 40; temperature = temperature + 0.1) {
+        System.out.println("Warming water");
             try {
-                Thread.sleep(60000);
+                while (this.water.getTemperature() <= 40) {
+                temperature = this.water.getTemperature() + 0.1;
+                this.water.setTemperature(temperature);
+                Thread.sleep(60000);}
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
-}
+

@@ -2,7 +2,9 @@ package main.java.project.vessel;
 
 import main.java.project.material.Material;
 
-public abstract class Vessel {
+import java.io.Serializable;
+
+public abstract class Vessel implements Serializable {
     private double volume;
     private double diameter;
     private int weight;
@@ -45,5 +47,8 @@ public abstract class Vessel {
         this.diameter = diameter;
         this.weight = weight;
         this.material = material;
+    }
+    public Vessel() {
+
     }
 }

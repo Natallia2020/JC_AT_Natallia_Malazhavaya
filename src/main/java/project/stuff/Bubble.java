@@ -1,4 +1,4 @@
-package main.java.project.state;
+package main.java.project.stuff;
 
 public class Bubble {
     private double volume = 0.3;

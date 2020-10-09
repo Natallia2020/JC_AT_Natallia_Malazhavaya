@@ -1,6 +1,4 @@
-package main.java.project.state;
-
-import main.java.project.vessel.Transformable;
+package main.java.project.stuff;
 
 public abstract class Water implements Transformable {
     private String color = "no";
@@ -37,6 +35,15 @@ public abstract class Water implements Transformable {
     }
 
     public void setTemperature(double temperature) {
+        this.temperature = temperature;
+    }
+
+    public Water() {}
+
+    public Water(String color, String transparency, String smell, double temperature) {
+        this.color = color;
+        this.transparency = transparency;
+        this.smell = smell;
         this.temperature = temperature;
     }
 }

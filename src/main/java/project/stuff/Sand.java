@@ -1,6 +1,4 @@
-package main.java.project.material;
-
-import main.java.project.vessel.Transformable;
+package main.java.project.stuff;
 
 public class Sand implements Transformable {
     @Override

@@ -1,8 +1,9 @@
-package main.java.project.boxing;
+package main.java.project.warehouse;
 
 import main.java.project.vessel.Vessel;
 
 import java.io.Serializable;
+import java.lang.reflect.Type;
 import java.util.Arrays;
 
 public class VesselBox<T> extends Vessel implements Serializable {
@@ -49,11 +50,11 @@ public class VesselBox<T> extends Vessel implements Serializable {
             container[currentPosition++] = o;
         }
     }
-    @Override
-    public String toString() {
-        return "VesselBox{" +
-                "container=" + Arrays.toString(container) +
-                '}';
+
+    public String getTypeContainer() {
+        T type = container[0];
+        String type2 = type.getClass().getSimpleName();
+        return type2;
     }
 }
 
