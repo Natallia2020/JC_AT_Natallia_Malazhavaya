@@ -45,10 +45,11 @@ class Person {
         this.age = age;
     }
 
-    //создать класс Person, с полями name, surname, age. Сгенерировать группу из 100 человек в возрасте от 15 до 30 лет.
-    // Написать одну непрерывную цепочку stream вызовов, которая выбирает людей, возраст которых меньше 21, выводит их имена и возраст
-    // в консоль, сортирует по фамилии, а потом по имени(использовать thenComparing у объекта Comparator), берет 4 первых человека,
-    // формирует коллекцию из имен объектов, собирает все в коллекцию
+    /* создать класс Person, с полями name, surname, age. Сгенерировать группу из 100 человек в возрасте от 15 до 30 лет.
+    Написать одну непрерывную цепочку stream вызовов, которая выбирает людей, возраст которых меньше 21, выводит их имена и возраст
+    в консоль, сортирует по фамилии, а потом по имени(использовать thenComparing у объекта Comparator), берет 4 первых человека,
+    формирует коллекцию из имен объектов, собирает все в коллекцию
+     */
     public static void main(String[] args) {
         Collection<Person> peoples = Arrays.asList(
                 new Person("Вася", "Пупкин", 18),
@@ -62,26 +63,14 @@ class Person {
                 new Person("Константин", "Савин", 30),
                 new Person("Игорь", "Афинов", 27)
         );
-        System.out.println("List before sorting:");
-        List<Person> peoples2 = peoples.stream()
+
+        peoples.stream()
                 .filter(p -> p.getAge()<21)
-                .collect(Collectors.toList());
-        for (Person temp:peoples2) {
-            System.out.println(temp.getName() + " " + temp.getSurname() + " " + temp.getAge());
-        }
-        System.out.println("List after sorting:");
-        List<String> peoples3 = peoples.stream()
-                .filter(p -> p.getAge()<21)
+                .peek(temp -> System.out.println(temp.getName() + " " + temp.getSurname() + " " + temp.getAge()))
                 .sorted(Comparator.comparing(Person::getSurname).thenComparing(Person::getName))
                 .limit(4)
                 .map(Person::getName)
+                .peek(temp -> System.out.println(temp))
                 .collect(Collectors.toList());
-        for (String temp:peoples3) {
-            System.out.println(temp);
-        }
-//        peoples.stream()
-//                .filter(p -> p.getAge()<21)
-//                .peek(s -> System.out.println(s.getName() + " " + s.getSurname() + " " + s.getAge())
-
     }
 }
