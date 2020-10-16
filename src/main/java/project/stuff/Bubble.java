@@ -1,16 +1,8 @@
 package main.java.project.stuff;
 
 public class Bubble {
-    private double volume = 0.3;
+    public static final double VOLUME = 0.3;
     private String gas;
-
-    public double getVolume() {
-        return volume;
-    }
-
-    public void setVolume(double volume) {
-        this.volume = volume;
-    }
 
     public String getGas() {
         return gas;
@@ -25,7 +17,6 @@ public class Bubble {
     }
 
     public void cramp() {
-        System.out.println("Cramping the bubbles");
         System.out.println("Cramp!");
     }
 }
