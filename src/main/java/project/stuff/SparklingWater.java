@@ -1,6 +1,8 @@
 package main.java.project.stuff;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class SparklingWater extends Water {
     private boolean isOpened;
@@ -10,8 +12,8 @@ public class SparklingWater extends Water {
         return isOpened;
     }
 
-    public void setOpened(boolean opened) {
-        this.isOpened = opened;
+    public void setOpened(boolean isOpened) {
+        this.isOpened = isOpened;
     }
 
     public List<Bubble> getBubbles() {
@@ -26,16 +28,9 @@ public class SparklingWater extends Water {
         checkIsOpened();
     }
 
-    public SparklingWater(String color, String transparency, String smell, int temperature) {
-        super(color, transparency, smell, temperature);
-        checkIsOpened();
-    }
-
-
     public void pump(List<Bubble> bubbles) {
         System.out.println("Making the water sparkling");
         this.bubbles = bubbles;
-        setBubbles(bubbles);
     }
 
     public void checkIsOpened() {
@@ -63,39 +58,46 @@ public class SparklingWater extends Water {
     private void degas() throws InterruptedException {
         System.out.println("Making the water still");
         long l1 = System.currentTimeMillis();
-        try {
-            double crampBubbles = 0;
-            for (int i = 0; i < this.bubbles.size() && this.bubbles.size() >= crampBubbles; i++) {
-                crampBubbles = 10 + 5 * Math.floor(this.getTemperature());
-                for (int j = 0; j <= crampBubbles; j++) {
-                    bubbles.remove(j);
-                }
-                if(this.bubbles.size() < crampBubbles) {
-                        for (int k = 0; k < this.bubbles.size(); k++) {
-                            bubbles.remove(k);
-                        }
-                    }
-                Thread.sleep(1000);
+        while (bubbles.size() != 0) {
+            int crampBubbles = 10 + 5 * this.getTemperature();
+            System.out.println("crampBubbles is: " + crampBubbles);
+            for (int i = 0; i < crampBubbles && i < bubbles.size(); i++) {
+                bubbles.get(i).cramp();
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            if (bubbles.size() > crampBubbles) {
+                for (int j = 0; j < crampBubbles; j++) {
+                    bubbles.remove(bubbles.size()-1);
+                }
+                System.out.println("bubbles.size is: " + bubbles.size());
+
+                Thread.sleep(1000);
+            } else {
+                for (int i = 0; i < bubbles.size(); i++) {
+                    bubbles.remove(bubbles.size()-1);
+                }
+                break;
+            }
         }
+        System.out.println("Bubbles size is: " + bubbles.size());
+
         long l2 = System.currentTimeMillis() - l1;
         System.out.println("The water became still in" + " " + l2 / 1000 + " " + "seconds");
     }
 
-    public boolean isSparkle() {
-        System.out.println("Check if the water has bubbles");
-        if (this.bubbles.size() > 0) {
-            return true;
-        } else {
-            System.out.println("There are no bubbles in this bottle");
-            return false;
+            public boolean isSparkle() {
+                System.out.println("Check if the water has bubbles");
+                if (this.bubbles.size() > 0) {
+                    System.out.println("There are bubbles in this bottle");
+                    return true;
+                } else {
+                    System.out.println("There are no bubbles in this bottle");
+                    return false;
+                }
+            }
+
+            @Override
+            public void mix() {
+            }
+
         }
-    }
 
-    @Override
-    public void mix() {
-    }
-
-}
