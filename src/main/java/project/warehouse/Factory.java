@@ -28,23 +28,16 @@ public class Factory {
     }
     public Containable createVessel(double volume, Material material, Transformable stuff, Class <?> clazz) {
         if (clazz.equals("Bottle")) {
-        } else if (clazz.equals("Can")) {
+            return new Bottle(volume, material, (SparklingWater) stuff);
+        }
+        if (clazz.equals("Can")) {
             return new Can(volume, material);
-        } else if (clazz.equals("Cup")) {
+        }
+        if (clazz.equals("Cup")) {
             return new Cup(volume, material);
         }
-        return new Bottle(volume, material, (SparklingWater) stuff);
+        else return null;
 
     }
 
-//    public Containable createVessel(double volume, Material material, Transformable stuff, Class <?> clazz) {
-//        if (clazz.equals("Bottle"))
-//        return new Bottle(volume, material, (SparklingWater) stuff);
-//        if (clazz.equals("Can"))
-//            return new Can(volume, material);
-//        if (clazz.equals("Cup"))
-//            return new Cup(volume, material);
-//
-//
-//    }
 }
