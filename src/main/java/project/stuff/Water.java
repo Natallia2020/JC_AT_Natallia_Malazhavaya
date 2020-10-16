@@ -4,7 +4,7 @@ public abstract class Water implements Transformable {
     private String color = "no";
     private String transparency = "transparent";
     private String smell = "no";
-    private double temperature = 0;
+    private int temperature = 0;
 
     public String getColor() {
         return color;
@@ -30,17 +30,17 @@ public abstract class Water implements Transformable {
         this.smell = smell;
     }
 
-    public double getTemperature() {
+    public int getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(double temperature) {
+    public void setTemperature(int temperature) {
         this.temperature = temperature;
     }
 
     public Water() {}
 
-    public Water(String color, String transparency, String smell, double temperature) {
+    public Water(String color, String transparency, String smell, int temperature) {
         this.color = color;
         this.transparency = transparency;
         this.smell = smell;
