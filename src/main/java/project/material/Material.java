@@ -1,6 +1,10 @@
 package main.java.project.material;
 
-public class Material {
+public enum Material {
+    GLASS(0.017, "green", 2200),
+    PLASTIC(0.2, "white", 1800),
+    METAL(58.0, "silver", 7800);
+
     private double thermalConductivity;
     private String color;
     private double density;
@@ -29,9 +33,9 @@ public class Material {
         this.density = density;
     }
 
-    public Material(double thermalConductivity, String color, double density) {
-        this.thermalConductivity = thermalConductivity;
-        this.color = color;
-        this.density = density;
+    Material(double thermalConductivity, String color, double density) {
+    this.thermalConductivity = thermalConductivity;
+    this.color = color;
+    this.density = density;
     }
 }
