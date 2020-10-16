@@ -1,60 +1,66 @@
 package main.java.project.warehouse;
 
+import main.java.project.vessel.Containable;
 import main.java.project.vessel.Vessel;
 
 import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 public class VesselBox<T> extends Vessel implements Serializable {
-    private T[] container;
-    private int currentPosition;
 
-    public T[] getContainer() {
-        return container;
+    private int id;
+    private String name;
+    private int capacity;
+    private List<Containable> box;
+
+    public int getId() {
+        return id;
     }
 
-    public void setContainer(T[] container) {
-        this.container = container;
+    public String getName() {
+        return name;
     }
 
-    public int getCurrentPosition() {
-        return currentPosition;
+    public int getCapacity() {
+        return capacity;
     }
 
-    public void setCurrentPosition(int currentPosition) {
-        this.currentPosition = currentPosition;
+    public List<Containable> getBox() {
+        return box;
     }
 
-    public VesselBox(int i){
-        if (i == 9) {
-            container = (T[]) new Object[i];
-            currentPosition = 0;
-        }
-        if (i == 24){
-            container = (T[]) new Object[i];
-            currentPosition = 0;
-        }
-        if (i == 36){
-            container = (T[]) new Object[i];
-            currentPosition = 0;
-        }
-
-        if (i != 9 && i != 24 && i != 36) {
+    public VesselBox(int id, String name, List<Containable> box) {
+        capacity = box.size();
+        if (capacity == 9 | capacity == 24 | capacity == 36) {
+            this.id = id;
+            this.name = name;
+            this.box = box;
+        } else
             System.out.println("Enter correct size of VesselBox");
-        }
     }
 
-    public void add(T o){
-        if (currentPosition < container.length){
-            container[currentPosition++] = o;
-        }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        VesselBox<?> vesselBox = (VesselBox<?>) o;
+        return id == vesselBox.id &&
+                capacity == vesselBox.capacity &&
+                Objects.equals(name, vesselBox.name) &&
+                Objects.equals(box, vesselBox.box);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, capacity, box);
     }
 
     public String getTypeContainer() {
-        T type = container[0];
+        Containable type = this.box.get(0);
         String type2 = type.getClass().getSimpleName();
         return type2;
     }
 }
-
