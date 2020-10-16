@@ -4,26 +4,32 @@ import main.java.project.vessel.Bottle;
 import main.java.project.vessel.Cup;
 import main.java.project.vessel.Vessel;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Warehouse {
 
-    public VesselBox<Bottle> createVesselBoxWithBottles(int numberOfBottles) {
-        VesselBox<Bottle> nameOfVesselBoxWithBottles = new VesselBox<>(numberOfBottles);
-        for (int i = 0; i < numberOfBottles; i++) {
-            nameOfVesselBoxWithBottles.add(new Bottle());
-        }
-        System.out.println("This VesselBox has" + " " + numberOfBottles + " " + "bottles");
-        return nameOfVesselBoxWithBottles;
-    }
-    public VesselBox<Cup> createVesselBoxWithCups(int numberOfCups) {
-        VesselBox<Cup> nameOfVesselBoxWithCups = new VesselBox<>(numberOfCups);
-        for (int i = 0; i < numberOfCups; i++) {
-            nameOfVesselBoxWithCups.add(new Cup());
-        }
-        System.out.println("This VesselBox has" + " " + numberOfCups + " " + "cups");
-        return nameOfVesselBoxWithCups;
+    private Map<Integer, VesselBox> stock = new HashMap<>();
+
+    public Map<Integer, VesselBox> getStock() {
+        return stock;
     }
 
+    public void setStock(Map<Integer, VesselBox> stock) {
+        this.stock = stock;
+    }
+
+    public void addBox(VesselBox box) {
+        stock.put(box.getId(), box);
+    }
+
+    public void removeBox(int id) {
+        stock.remove(id);
+    }
+
+    VesselBox getBox() {
+        System.out.println("Enter ID of VesselBox");
+        Scanner sc = new Scanner(System.in);
+        int getID = sc.nextInt();
+        return stock.get(getID);
+    }
 }
