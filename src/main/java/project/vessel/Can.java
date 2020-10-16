@@ -4,12 +4,30 @@ import main.java.project.material.Material;
 import main.java.project.stuff.Transformable;
 
 public class Can extends Vessel implements Containable {
+    private Transformable stuff;
+    private double diametr = 10.0;
 
-    public Can(double volume, double diameter, int weight, Material material) {
-        super(volume, diameter, weight, material);
+    public Transformable getStuff() {
+        return stuff;
     }
-    public Can() {
 
+    public void setStuff(Transformable stuff) {
+        this.stuff = stuff;
+    }
+
+    public double getDiametr() {
+        return diametr;
+    }
+
+    public void setDiametr(double diametr) {
+        this.diametr = diametr;
+    }
+
+    public Can(double volume, Material material) {
+        super(volume, material);
+    }
+
+    public Can() {
     }
 
     @Override
