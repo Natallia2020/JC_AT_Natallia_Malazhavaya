@@ -4,8 +4,27 @@ import main.java.project.material.Material;
 import main.java.project.stuff.Transformable;
 
 public class Cup extends Vessel implements Containable {
-    public Cup(double volume, double diameter, int weight, Material material) {
-        super(volume, diameter, weight, material);
+    private Transformable stuff;
+    private double diametr = 2.0;
+
+    public Transformable getStuff() {
+        return stuff;
+    }
+
+    public void setStuff(Transformable stuff) {
+        this.stuff = stuff;
+    }
+
+    public double getDiametr() {
+        return diametr;
+    }
+
+    public void setDiametr(double diametr) {
+        this.diametr = diametr;
+    }
+
+    public Cup(double volume, Material material) {
+        super(volume, material);
     }
     public Cup() {
 
