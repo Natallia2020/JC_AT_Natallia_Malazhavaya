@@ -11,7 +11,7 @@ import java.util.Objects;
 
 public class VesselBox<T> extends Vessel implements Serializable {
 
-    private int id;
+    static private int id = 0;
     private String name;
     private int capacity;
     private List<Containable> box;
@@ -32,10 +32,10 @@ public class VesselBox<T> extends Vessel implements Serializable {
         return box;
     }
 
-    public VesselBox(int id, String name, List<Containable> box) {
+    public VesselBox(String name, List<Containable> box) {
         capacity = box.size();
         if (capacity == 9 | capacity == 24 | capacity == 36) {
-            this.id = id;
+            id++;
             this.name = name;
             this.box = box;
         } else
