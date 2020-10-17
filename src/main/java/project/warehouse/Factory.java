@@ -22,18 +22,24 @@ public class Factory {
         this.warehouse = warehouse;
     }
 
-    public void createVesselBox(int capacity, double volume, Material material, Transformable stuff, Class <?> clazz) {
+    public void createVesselBox(String name, int capacity, double volume, Material material, Transformable stuff, Class <?> clazz) {
         List <Containable> box = new ArrayList<>();
-
+        if (capacity == 9 | capacity == 24 | capacity == 36) {
+            for (int i = 0; i < capacity; i++) {
+                box.add(createVessel(volume, material, stuff, clazz));
+            }
+        }
+        VesselBox vesselBox = new VesselBox(name, box);
     }
+
     public Containable createVessel(double volume, Material material, Transformable stuff, Class <?> clazz) {
-        if (clazz.equals("Bottle")) {
+        if (clazz.getClass().getSimpleName().equals("Bottle")) {
             return new Bottle(volume, material, (SparklingWater) stuff);
         }
-        if (clazz.equals("Can")) {
+        if (clazz.getClass().getSimpleName().equals("Can")) {
             return new Can(volume, material);
         }
-        if (clazz.equals("Cup")) {
+        if (clazz.getClass().getSimpleName().equals("Cup")) {
             return new Cup(volume, material);
         }
         else return null;
