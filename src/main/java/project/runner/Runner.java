@@ -1,8 +1,9 @@
 package main.java.project.runner;
 
 import main.java.project.material.Material;
-import main.java.project.vessel.Bottle;
 import main.java.project.stuff.SparklingWater;
+import main.java.project.vessel.Bottle;
+import main.java.project.vessel.Can;
 import main.java.project.vessel.Cup;
 import main.java.project.warehouse.Factory;
 import main.java.project.warehouse.Stocktaking;
@@ -39,11 +40,11 @@ public class Runner {
         }
 
         Stocktaking.deletingInformationFromFile();
-        VesselBox box1 = new VesselBox(1, "box1", listOfBottles);
+        VesselBox box1 = new VesselBox("box1", listOfBottles);
         Stocktaking.registerBox(box1);
-        VesselBox box2 = new VesselBox(2, "box2", listOfBottles);
+        VesselBox box2 = new VesselBox("box2", listOfBottles);
         Stocktaking.registerBox(box2);
-        VesselBox box3 = new VesselBox(3, "box3", listOfBottles);
+        VesselBox box3 = new VesselBox("box3", listOfBottles);
         Stocktaking.registerBox(box3);
         Stocktaking.getInfo();
         Stocktaking.disposeBox(box1);
