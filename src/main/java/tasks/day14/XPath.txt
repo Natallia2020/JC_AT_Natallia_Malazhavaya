@@ -1,0 +1,86 @@
+Spartak.by
+1) Главная
+  //ul[@id='main-nav']/li[@class='active']/a[text() = 'Главная']
+  //li[1]/a[1]
+2) Партнеры
+  //li[4]/a[text() = 'Партнерам']
+  //a[contains(., 'Партнерам')]
+3) Пользователь
+  //button[@id='user-auth-menu']
+  //div[@class='user-auth dropdown open']/button[@id='user-auth-menu']
+4) Выбор китайского языка
+  //ul[@id='lang-switcher']/li/a[contains(text(),'Ch')]/@href
+  //a[text()='Ch']/@href
+5) Конфеты
+  //div[@class='main-logo-icons-wrap']/a[1]/@href
+  //a[@id='bx_290038399_44']/@href
+6) Логотип Спартак
+  //div[@class='main-logo']/img
+  //img[@id='bx_290038399_36']
+7) Печенье
+  //div[@class='main-logo-icons-wrap'][2]/a[3]/@href
+  //a[@id='bx_290038399_47']/@href
+8) Логотип 1924
+  //div[@class='container']/img
+  //img[@title='Кондитерская Фабрика']
+9) Представительства
+  //a[contains(., 'Наши представительства')]/@href
+  //ul[@id='sub-nav']/li[4]/a[1]/@href
+10) О компании
+   //header[@class='section-header']/h2[1]
+   //h2[text()='О компании']
+11) Cсылка на vk
+   //div[@class='social-buttons-wrap']/a[1]/@href
+   //div[@class='social-buttons-wrap']/a[last()-4]/@href
+12) Ссылка на utube
+   //div[@class='social-buttons-wrap']/a[5]/@href
+   //div[@class='social-buttons-wrap']/a[last()]/@href
+
+Mail.ru
+1) Мой мир
+  //a[@id='ph_my']/@href
+  //td[@class='w-x-ph__col w-x-ph__col_left']/a[3]/@href
+2) Все проекты
+  //a[@id='PH_allProjects']/@href
+  //a[text()='Все проекты']/@href
+3) Картинки
+  //div[@id='search__categories']/a[text()='Картинки']/@href
+  //a[@data-name='pictures']/@href
+4) Регистрация
+  //a[@id='PH_regLink']/@href 
+  //a[text()='Регистрация']/@href 
+5) Поиск значок
+  //label[@class='search__icon svelte-1yt5r38']
+  //form[@id='search']/label[1]
+6) Найти кнопка
+  //button[@id='search:submit']
+  //button[text()='Найти']
+7) Облако
+  //a[@name='clb3996485']/@href
+  //a[@title='Облако']/@href
+8) Леди
+  //div[@class='tabs']/a[4]/@href
+  //div[@class='tabs']/a[last()-8]/@href
+9) @mail.ru
+  //select[@id='mailbox:domain']
+  //select[@name='domain']
+10) Ввести пароль
+  //button[@id='mailbox:submit-button']
+  //button[text()='Ввести пароль']
+11) Создать почту
+  //a[@id='signup']/@href
+  //a[text()='Создать почту']/@href
+12) Третья по счету новость
+  //div[@class='grid__ccol i-pull-left svelte-1ombslr']/ul[1]/li[3]/div[1]/a[1]/@href
+  //ul[contains(@class, 'tabs-content')]/li[3]/div[1]/a[1]/@href
+13) Одноклассники
+   //div[@class='svelte-qyhth7']/a[3]/@href
+   //a[@data-alias='ok']/@href
+14) Курс рубль
+   //i[@class='rate__icon rate__icon_rub svelte-r2v6pj']
+   //div[@class='rates svelte-l6oue2']/a[2]/i
+15) Реклама
+   
+  
+   
+  
