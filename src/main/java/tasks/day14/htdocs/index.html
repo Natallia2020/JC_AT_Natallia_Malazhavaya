@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:background="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Main page</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <script>
+function hideValue (x) {
+global = x.value;
+if (x.value == x.defaultValue) {
+x.value = "";
+}
+}
+function setValue (x) {
+if (x.value == "") {
+x.value = global;
+}
+}
+
+    </script>
+    <style>
+     H1 {
+        text-align: center;
+        font-size: 500%;
+        font: Century Gothic, sans-serif;
+        }
+     P {
+        color: #808080;
+        font: 12pt Comic Sans MS, sans-serif;
+        }
+        FORM {
+        text-align: center;
+        }
+        INPUT {
+        background-position: center;
+        height: 150px;
+        width: 500px;
+        font-weight: bold;
+        font-size: 200%;
+        border: none;
+        cursor: pointer
+        }
+        input:hover {
+        background: url(4.png);
+        }
+        .colortext1 {
+        background: url(1.png);
+        }
+        .colortext2 {
+        background: url(2.png);
+        }
+        .colortext3 {
+        background: url(3.png);
+        }
+
+    </style>
+</head>
+<body>
+<h1>Welcome</h1>
+<form method="get" action="about.html">
+    <input id="about" type="submit" value="About us" class="colortext1" onmouseover="hideValue(this)"
+           onmouseout="setValue(this)">
+</form>
+<form method="get" action="app/index.php">
+    <input id="regis" type="submit" value="Check Registration" class="colortext2" onmouseover="hideValue(this)"
+           onmouseout="setValue(this)">
+</form>
+<form method="get" action="media.html">
+    <input id="media" type="submit" value="Get Media" class="colortext3" onmouseover="hideValue(this)" onmouseout="setValue(this)">
+</form>
+<br>
+<br>
+<p align="center">
+    <a>This is just a dummy site(c)</a>
+</p>
+</body>
+</html>
