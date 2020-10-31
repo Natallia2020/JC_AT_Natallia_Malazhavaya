@@ -46,8 +46,8 @@ public class BookingParis {
         driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
         Thread.sleep(4000);
 //        WebElement theMostExpensiveHotel = new WebDriverWait(driver, 10)
-//                .until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='hotellist_inner']/div[last()-1]/div[2]/div[2]/div/div/div/div[2]/div/div")));
-        WebElement theMostExpensiveHotel = driver.findElement(By.xpath("//div[@id='hotellist_inner']/div[last()-1]/div[2]/div[2]/div/div/div/div[2]/div/div"));
+//                .until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='hotellist_inner']/div[last()]/div[2]/div[3]/div/div/div/div[2]/div/div")));
+        WebElement theMostExpensiveHotel = driver.findElement(By.xpath("//div[@id='hotellist_inner']/div[last()]/div[2]/div[3]/div/div/div/div[2]/div/div"));
         String expensivePrice = theMostExpensiveHotel.getText();
         System.out.println(expensivePrice);
         String cheapestPriceNumbers = cheapestPrice.replaceAll("[^0-9]", "");
